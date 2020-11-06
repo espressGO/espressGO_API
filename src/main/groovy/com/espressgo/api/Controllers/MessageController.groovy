@@ -1,8 +1,8 @@
 package com.espressgo.api.Controllers
 
-import models.User
-import com.espressgo.api.Repository.UserRepository
-import com.fasterxml.jackson.databind.ObjectMapper
+import com.espressgo.api.Repository.MessageRepository
+import models.Message
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
@@ -13,18 +13,15 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping(value = "/user", method = RequestMethod.POST)
-class UserController {
+@RequestMapping(value = "/createmessage", method = RequestMethod.POST)
+class MessageController {
 
     @Autowired
-    private UserRepository userRepository
+    private MessageRepository messageRepository
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    User add(@RequestBody User user) {
-        User newUser = new User()
-        newUser.email = user.email;
-        System.out.println(newUser.email)
-        return userRepository.save(newUser);
+    Message add(@RequestBody Message message) {
+        Message currMessage = new Message();
     }
 }
