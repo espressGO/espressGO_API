@@ -23,8 +23,8 @@ class UserController {
     @ResponseStatus(code = HttpStatus.CREATED)
     User add(@RequestBody User user) {
         User newUser = new User()
-        newUser.email = user.email;
-        System.out.println(newUser.email)
-        return userRepository.save(newUser);
+        newUser.setEmail(user.getEmail())
+        System.out.println(newUser.getEmail())
+        return userRepository.save(newUser)
     }
 }
