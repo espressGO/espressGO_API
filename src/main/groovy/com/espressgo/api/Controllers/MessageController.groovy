@@ -1,8 +1,7 @@
 package com.espressgo.api.Controllers
 
 import com.espressgo.api.Repository.MessageRepository
-import models.Message
-
+import com.espressgo.api.models.Message
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping

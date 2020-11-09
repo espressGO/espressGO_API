@@ -11,19 +11,19 @@
 	<groupId>com.espressgo</groupId>
 	<artifactId>api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>espressGo_api</name>
+	<name>espressGO_API</name>
 	<description>EspressGo API</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.espressgo.models</groupId>
-			<artifactId>espressgo_models</artifactId>
-			<version>1.40</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.espressgo.models</groupId>-->
+<!--			<artifactId>espressgo_models</artifactId>-->
+<!--			<version>1.40</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
