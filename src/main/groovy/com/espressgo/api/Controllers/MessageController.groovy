@@ -2,8 +2,8 @@ package com.espressgo.api.Controllers
 
 import com.espressgo.api.Repository.MessageRepository
 import com.espressgo.api.Repository.UserRepository
-import models.Message
-import models.User
+import com.espressgo.api.models.Message
+import com.espressgo.api.models.User
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping

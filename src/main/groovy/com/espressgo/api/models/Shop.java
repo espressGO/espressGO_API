@@ -10,6 +10,7 @@ public class Shop {
     @Id
     public ObjectId id;
     public ArrayList<Drink> drinks;
+    public ArrayList<Message> reviews;
     public String shop_name;
     public String neighborhood;
     public String website;
@@ -52,5 +53,18 @@ public class Shop {
 
     public void setDrinks(ArrayList<Drink> drinks) {
         this.drinks = drinks;
+    }
+
+    public ArrayList<Message> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(ArrayList<Message> reviews) {
+        this.reviews = reviews;
+    }
+
+    public void addReview(Message review)
+    {
+        this.reviews.add(review);
     }
 }

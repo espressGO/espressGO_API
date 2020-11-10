@@ -6,14 +6,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "drink")
 public class Drink {
 
-    public enum Type{
-        TEA, LATTE
-    }
+
     @Id
     public ObjectId id;
     public ObjectId shopId;
     public String drink_name;
-    public Type drink_type;
+    public String drink_type;
     public Double price;
 
     public ObjectId getId() {
@@ -40,11 +38,11 @@ public class Drink {
         this.drink_name = drink_name;
     }
 
-    public Type getDrink_type() {
+    public String getDrink_type() {
         return drink_type;
     }
 
-    public void setDrink_type(Type drink_type) {
+    public void setDrink_type(String drink_type) {
         this.drink_type = drink_type;
     }
 
