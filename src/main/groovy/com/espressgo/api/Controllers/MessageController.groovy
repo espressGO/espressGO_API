@@ -1,8 +1,10 @@
 package com.espressgo.api.Controllers
 
 import com.espressgo.api.Repository.MessageRepository
+import com.espressgo.api.Repository.ShopRepository
 import com.espressgo.api.Repository.UserRepository
 import models.Message
+import models.Shop
 import models.User
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -23,6 +25,9 @@ class MessageController {
     @Autowired
     private UserRepository userRepository
 
+    @Autowired
+    private ShopRepository shopRepository
+
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     boolean add(@RequestBody Message message) {
@@ -33,6 +38,8 @@ class MessageController {
         currMessage.setRating(message.getRating())
         User myUser = userRepository.findById(currMessage.getUserId())
         myUser.addMessage(currMessage)
+
+        Shop shop = shopRepository.findByShopname("")
         userRepository.save(myUser)
         return true
     }

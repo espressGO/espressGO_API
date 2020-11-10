@@ -1,8 +1,8 @@
 package com.espressgo.api.Controllers
 
 import com.espressgo.api.Repository.UserRepository
-import com.espressgo.api.models.User
 import com.fasterxml.jackson.databind.ObjectMapper
+import models.User
 import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
