@@ -3,6 +3,7 @@ package com.espressgo.api.Controllers
 import com.espressgo.api.Repository.UserRepository
 import com.espressgo.api.models.User
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
@@ -21,10 +22,11 @@ class UserController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    User add(@RequestBody User user) {
+    ObjectId add(@RequestBody User user) {
         User newUser = new User()
         newUser.setEmail(user.getEmail())
         System.out.println(newUser.getEmail())
-        return userRepository.save(newUser)
+        userRepository.save(newUser)
+        return newUser.getId()
     }
 }
