@@ -1,8 +1,7 @@
 package com.espressgo.api.Controllers
 
 import com.espressgo.api.Repository.ShopRepository
-import models.Message
-import models.Shop
+import com.espressgo.api.models.Shop
 import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -24,13 +23,18 @@ class GetShop {
     @ResponseStatus(code = HttpStatus.CREATED)
     Shop shopId(@RequestBody String shopName) {
         String actualShop = shopName.replace("\"", "")
+        System.out.println("TRYING TO GET SHOP")
         System.out.println(actualShop)
         Shop currShop = shopRepository.findByShopname(actualShop)
-        System.out.println("TRYING TO GET SHOP")
-        System.out.println(currShop.getId())
-        if(currShop != null)
+        if(currShop != null) {
+            System.out.println("Got shop successfully!")
+            System.out.println(currShop.getId())
             return currShop
-        else
+        }
+        else {
+            System.out.println("Unable to find shop: " + actualShop)
             return null
+        }
+
     }
 }

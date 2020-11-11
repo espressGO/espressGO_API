@@ -5,19 +5,19 @@ import java.time.ZonedDateTime;
 import java.util.Date;
 
 public class Message {
-    public ObjectId userId;
+    public String userEmail;
     public ObjectId shopId;
     public ObjectId drinkId;
     public String comment;
     public Integer rating;
     private ZonedDateTime messageSent;
 
-    public ObjectId getUserId() {
-        return userId;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUserId(ObjectId userId) {
-        this.userId = userId;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public ObjectId getShopId() {

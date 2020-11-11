@@ -1,8 +1,7 @@
 package com.espressgo.api.Controllers
 
 import com.espressgo.api.Repository.UserRepository
-import models.Message
-import models.User
+import com.espressgo.api.models.User
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
@@ -27,6 +26,7 @@ class SignIn {
         System.out.println("This is our email " + actualEmail)
         User user = userRepository.findByEmail(actualEmail)
         System.out.println(user.getEmail())
+        System.out.println(user.getId())
         return user
     }
 }

@@ -11,7 +11,7 @@ public class Shop {
     public ObjectId id;
     public ArrayList<Drink> drinks;
     public ArrayList<Message> reviews;
-    public String shop_name;
+    public String shopname;
     public String neighborhood;
     public String website;
 
@@ -23,12 +23,12 @@ public class Shop {
         this.id = id;
     }
 
-    public String getShop_name() {
-        return shop_name;
+    public String getShopname() {
+        return shopname;
     }
 
-    public void setShop_name(String shop_name) {
-        this.shop_name = shop_name;
+    public void setShopname(String shop_name) {
+        this.shopname = shop_name;
     }
 
     public String getNeighborhood() {

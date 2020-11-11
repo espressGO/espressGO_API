@@ -1,5 +1,4 @@
 package com.espressgo.api.models;
-
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,7 +11,7 @@ public class User {
     public ObjectId id;
     public String email;
     public String displayName;
-    public ArrayList<Message> messages;
+    public ArrayList<Message> messages = new ArrayList<>();
     public ObjectId getId() {
         return id;
     }

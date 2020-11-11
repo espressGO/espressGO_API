@@ -2,8 +2,8 @@ package com.espressgo.api.Controllers
 
 import com.espressgo.api.Repository.MessageRepository
 import com.espressgo.api.Repository.UserRepository
-import models.Message
-import models.User
+import com.espressgo.api.models.Message
+import com.espressgo.api.models.User
 import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -26,7 +26,7 @@ class MessageController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    boolean add(@RequestBody Message message) {
+    String add(@RequestBody Message message) {
         Message currMessage = new Message();
         currMessage.setComment(message.getComment())
         currMessage.setShopId(message.getShopId())
@@ -34,9 +34,10 @@ class MessageController {
         currMessage.setRating(message.getRating())
         User myUser = userRepository.findByEmail(currMessage.getUserEmail())
         System.out.println("EMAIL HERE " + myUser.getEmail());
+        System.out.println("Message: " + currMessage.getComment() + " Rating: " + currMessage.getRating())
         myUser.addMessage(currMessage)
         userRepository.save(myUser)
 
-        return true
+        return "Post Created"
     }
 }
