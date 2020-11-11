@@ -27,8 +27,9 @@ class UserController {
         User newUser = new User()
         ArrayList<Message> messages = new ArrayList<>()
         newUser.setEmail(user.getEmail())
+        newUser.setDisplayName(user.getDisplayName())
         newUser.setMessages(messages);
-        System.out.println(newUser.getEmail())
+        System.out.println("USER DISPLAY NAME\t" + newUser.getDisplayName())
         userRepository.save(newUser)
         return newUser.getId()
     }
