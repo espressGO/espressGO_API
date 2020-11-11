@@ -27,7 +27,7 @@ class AllShops {
         for(Shop shop : shops)
         {
             System.out.println(shop.getWebsite())
-            if (shop.getWebsite()!= null)
+            if (shop.getShopname() != null)
                 toReturn.add(shop)
         }
         return toReturn
