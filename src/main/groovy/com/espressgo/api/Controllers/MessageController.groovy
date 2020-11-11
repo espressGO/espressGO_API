@@ -33,17 +33,26 @@ class MessageController {
     @ResponseStatus(code = HttpStatus.CREATED)
     boolean add(@RequestBody Message message) {
         Message currMessage = new Message();
+        System.out.println(message.getComment())
+        System.out.println("line 36 shop " + message.getShopname())
         currMessage.setComment(message.getComment())
         currMessage.setShopId(message.getShopId())
+        currMessage.setShopname(message.getShopname())
         currMessage.setUserEmail(message.getUserEmail())
         currMessage.setRating(message.getRating())
         User myUser = userRepository.findByEmail(currMessage.getUserEmail())
         System.out.println("EMAIL HERE " + myUser.getEmail());
         myUser.addMessage(currMessage)
-
-        Shop shop = shopRepository.findByShopname("")
         userRepository.save(myUser)
 
+        System.out.println("SHOP NAME: " + currMessage.getShopname())
+        Shop shop = shopRepository.findByShopname(currMessage.getShopname())
+        if(shop.getReviews()== null)
+        {
+            ArrayList<Message> reviews = new ArrayList<>()
+            shop.setReviews(reviews)
+        }
+        shop.addReview(currMessage)
         return true
     }
 }
