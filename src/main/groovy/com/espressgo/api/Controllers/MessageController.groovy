@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
+import java.time.ZonedDateTime
+
 @RestController
 @RequestMapping(value = "/createmessage", method = RequestMethod.POST)
 class MessageController {
@@ -40,6 +42,7 @@ class MessageController {
         currMessage.setShopname(message.getShopname())
         currMessage.setUserEmail(message.getUserEmail())
         currMessage.setRating(message.getRating())
+        currMessage.setMessageSent(ZonedDateTime.now())
         User myUser = userRepository.findByEmail(currMessage.getUserEmail())
         System.out.println("EMAIL HERE " + myUser.getEmail());
         myUser.addMessage(currMessage)
