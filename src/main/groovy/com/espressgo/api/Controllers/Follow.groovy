@@ -16,9 +16,12 @@ class Follow {
 
     //first person: following the second person. user[0].addFollowee(user[1])
     //Second person gains a follower user[1].addFollower(user[0])
-    String followUser(ArrayList<User> users){
-        User user1 = users.get(0)
-        User user2 = users.get(1)
+    String followUser(ArrayList<String> emails){
+        String email1 = emails.get(0).replace("\"", "")
+        String email2 = emails.get(1).replace("\"", "")
+
+        User user1 = userRepository.findByEmail(email1)
+        User user2 = userRepository.findByEmail(email2)
         user1.addFollowee(user2)
         user2.addFollower(user1)
         userRepository.save(user1)
