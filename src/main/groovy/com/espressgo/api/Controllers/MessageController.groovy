@@ -6,6 +6,7 @@ import com.espressgo.api.Repository.UserRepository
 import models.Message
 import models.Shop
 import models.User
+import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
@@ -34,13 +35,15 @@ class MessageController {
         Message currMessage = new Message();
         currMessage.setComment(message.getComment())
         currMessage.setShopId(message.getShopId())
-        currMessage.setUserId(message.getUserId())
+        currMessage.setUserEmail(message.getUserEmail())
         currMessage.setRating(message.getRating())
-        User myUser = userRepository.findById(currMessage.getUserId())
+        User myUser = userRepository.findByEmail(currMessage.getUserEmail())
+        System.out.println("EMAIL HERE " + myUser.getEmail());
         myUser.addMessage(currMessage)
 
         Shop shop = shopRepository.findByShopname("")
         userRepository.save(myUser)
+
         return true
     }
 }

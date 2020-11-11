@@ -1,9 +1,8 @@
 package com.espressgo.api.Controllers
 
-import com.espressgo.api.Repository.UserRepository
-import com.fasterxml.jackson.databind.ObjectMapper
+import com.espressgo.api.Repository.ShopRepository
 import models.Message
-import models.User
+import models.Shop
 import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -15,21 +14,23 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping(value = "/user", method = RequestMethod.POST)
-class UserController {
+@RequestMapping(value = "/getShop", method = RequestMethod.POST)
+class GetShop {
 
     @Autowired
-    private UserRepository userRepository
+    private ShopRepository shopRepository
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    ObjectId add(@RequestBody User user) {
-        User newUser = new User()
-        ArrayList<Message> messages = new ArrayList<>()
-        newUser.setEmail(user.getEmail())
-        newUser.setMessages(messages);
-        System.out.println(newUser.getEmail())
-        userRepository.save(newUser)
-        return newUser.getId()
+    Shop shopId(@RequestBody String shopName) {
+        String actualShop = shopName.replace("\"", "")
+        System.out.println(actualShop)
+        Shop currShop = shopRepository.findByShopname(actualShop)
+        System.out.println("TRYING TO GET SHOP")
+        System.out.println(currShop.getId())
+        if(currShop != null)
+            return currShop
+        else
+            return null
     }
 }
