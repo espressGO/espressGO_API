@@ -1,6 +1,7 @@
 package com.espressgo.api.Controllers
 
 import com.espressgo.api.Repository.ShopRepository
+import com.espressgo.api.models.Drink
 import com.espressgo.api.models.Shop
 import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
@@ -29,6 +30,11 @@ class GetShop {
         if(currShop != null) {
             System.out.println("Got shop successfully!")
             System.out.println(currShop.getId())
+            Iterator<Drink> drinks = currShop.getDrinks().iterator()
+            while (drinks.hasNext()){
+                Drink drink = drinks.next()
+                System.out.println(drink.getDrink_name() + " " + drink.getDrink_type() + " " + drink.getPrice())
+            }
             return currShop
         }
         else {

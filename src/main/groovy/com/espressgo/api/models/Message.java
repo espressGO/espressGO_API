@@ -1,4 +1,5 @@
 package com.espressgo.api.models;
+
 import org.bson.types.ObjectId;
 
 import java.time.ZonedDateTime;
@@ -7,11 +8,27 @@ import java.util.Date;
 public class Message {
     public String userEmail;
     public ObjectId shopId;
+    public String shopname;
     public ObjectId drinkId;
+    public String drinkname;
     public String comment;
     public Integer rating;
     private ZonedDateTime messageSent;
 
+    public String getDrinkname() {
+        return drinkname;
+    }
+
+    public void setDrinkname(String drinkname) {
+        this.drinkname = drinkname;
+    }
+    public String getShopname() {
+        return userEmail;
+    }
+
+    public void setShopname(String shopname) {
+        this.shopname = shopname;
+    }
     public String getUserEmail() {
         return userEmail;
     }

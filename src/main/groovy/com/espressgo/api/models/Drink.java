@@ -10,8 +10,8 @@ public class Drink {
     @Id
     public ObjectId id;
     public String shopName;
-    public String drinkname;
-    public String drinktype;
+    public String drink_name;
+    public String drink_type;
     public Double price;
 
     public ObjectId getId() {
@@ -30,20 +30,20 @@ public class Drink {
         this.shopName = shopName;
     }
 
-    public String getDrinkname() {
-        return drinkname;
+    public String getDrink_name() {
+        return drink_name;
     }
 
-    public void setDrinkname(String drinkname) {
-        this.drinkname = drinkname;
+    public void setDrink_name(String drink_name) {
+        this.drink_name = drink_name;
     }
 
-    public String getDrinktype() {
-        return drinktype;
+    public String getDrink_type() {
+        return drink_type;
     }
 
-    public void setDrinktype(String drinktype) {
-        this.drinktype = drinktype;
+    public void setDrink_type(String drink_type) {
+        this.drink_type = drink_type;
     }
 
     public Double getPrice() {
