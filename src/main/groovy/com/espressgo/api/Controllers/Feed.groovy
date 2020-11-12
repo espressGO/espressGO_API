@@ -27,6 +27,7 @@ class Feed {
     ArrayList<Message> feed(@RequestBody String email) {
 
         String actualEmail = email.replace("\"", "")
+
         User user = userRepository.findByEmail(actualEmail)
         ArrayList<User> followees = user.getFollowees()
         ArrayList<Message> allMessages = new ArrayList<>()

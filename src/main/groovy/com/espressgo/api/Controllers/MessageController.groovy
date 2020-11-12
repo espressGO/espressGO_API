@@ -37,12 +37,13 @@ class MessageController {
         Message currMessage = new Message();
         System.out.println(message.getComment())
         System.out.println("line 36 shop " + message.getShopname())
+        System.out.println("line 36 email " + message.getUserEmail())
         currMessage.setComment(message.getComment())
         currMessage.setShopId(message.getShopId())
         currMessage.setShopname(message.getShopname())
         currMessage.setUserEmail(message.getUserEmail())
         currMessage.setRating(message.getRating())
-        currMessage.setMessageSent(ZonedDateTime.now())
+        //currMessage.setMessageSent(ZonedDateTime.now())
         User myUser = userRepository.findByEmail(currMessage.getUserEmail())
         System.out.println("EMAIL HERE " + myUser.getEmail());
         myUser.addMessage(currMessage)

@@ -23,7 +23,7 @@ public class Message {
         this.drinkname = drinkname;
     }
     public String getShopname() {
-        return userEmail;
+        return shopname;
     }
 
     public void setShopname(String shopname) {
@@ -77,4 +77,3 @@ public class Message {
         this.messageSent = messageSent;
     }
 }
-
