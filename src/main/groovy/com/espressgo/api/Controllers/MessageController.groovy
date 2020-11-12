@@ -1,8 +1,10 @@
 package com.espressgo.api.Controllers
 
 import com.espressgo.api.Repository.MessageRepository
+import com.espressgo.api.Repository.ShopRepository
 import com.espressgo.api.Repository.UserRepository
 import com.espressgo.api.models.Message
+import com.espressgo.api.models.Shop
 import com.espressgo.api.models.User
 import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
+import java.time.ZonedDateTime
+
 @RestController
 @RequestMapping(value = "/createmessage", method = RequestMethod.POST)
 class MessageController {
@@ -24,20 +28,34 @@ class MessageController {
     @Autowired
     private UserRepository userRepository
 
+    @Autowired
+    private ShopRepository shopRepository
+
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     String add(@RequestBody Message message) {
         Message currMessage = new Message();
+        System.out.println(message.getComment())
+        System.out.println("line 36 shop " + message.getShopname())
         currMessage.setComment(message.getComment())
         currMessage.setShopId(message.getShopId())
+        currMessage.setShopname(message.getShopname())
         currMessage.setUserEmail(message.getUserEmail())
         currMessage.setRating(message.getRating())
+        currMessage.setMessageSent(ZonedDateTime.now())
         User myUser = userRepository.findByEmail(currMessage.getUserEmail())
         System.out.println("EMAIL HERE " + myUser.getEmail());
-        System.out.println("Message: " + currMessage.getComment() + " Rating: " + currMessage.getRating())
         myUser.addMessage(currMessage)
         userRepository.save(myUser)
 
+        System.out.println("SHOP NAME: " + currMessage.getShopname())
+        Shop shop = shopRepository.findByShopname(currMessage.getShopname())
+        if(shop.getReviews()== null)
+        {
+            ArrayList<Message> reviews = new ArrayList<>()
+            shop.setReviews(reviews)
+        }
+        shop.addReview(currMessage)
         return "Post Created"
     }
 }

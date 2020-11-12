@@ -25,7 +25,9 @@ class UserController {
     User add(@RequestBody User user) {
         User newUser = new User()
         newUser.setEmail(user.getEmail())
-        System.out.println("This is the new user's email!" + newUser.getEmail())
+        newUser.setDisplayName(user.getDisplayName())
+        newUser.setMessages(user.getMessages())
+        System.out.println("This is the new user's display name!" + newUser.getDisplayName())
         userRepository.save(newUser)
         return newUser
     }

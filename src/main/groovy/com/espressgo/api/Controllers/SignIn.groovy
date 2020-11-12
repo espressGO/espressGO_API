@@ -25,8 +25,6 @@ class SignIn {
         String actualEmail = email.replace("\"", "")
         System.out.println("This is our email " + actualEmail)
         User user = userRepository.findByEmail(actualEmail)
-        System.out.println(user.getEmail())
-        System.out.println(user.getId())
         return user
     }
 }
